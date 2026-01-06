@@ -29,12 +29,12 @@ def test_accuracy(model,dataloader):
         for image_batch,label_batch in dataloader:
 
             image_batch=image_batch.to(device)
-            label_bacth=label_batch.to(device)
+            label_batch=label_batch.to(device)
 
             logits_batch=model(image_batch)
 
             predicts_batch=logits_batch.argmax(dim=1)
-            n_corrects+=(label_bacth==predicts_batch).sum().item()
+            n_corrects+=(label_batch==predicts_batch).sum().item()
 
     accuracy=n_corrects/len(dataloader.dataset)
 
@@ -67,7 +67,7 @@ def test(model,dataloader,loss_fn):
     with torch.no_grad():
         for image_batch,label_batch in dataloader:
             image_batch=image_batch.to(device)
-            label_bacth=label_batch.to(device)
+            label_batch=label_batch.to(device)
 
 
             logits_batch=model(image_batch)
