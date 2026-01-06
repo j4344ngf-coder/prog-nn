@@ -42,7 +42,12 @@ dataloader_test=torch.utils.data.DataLoader(
     #print(label_batch.shape)
     #break
 
+#GPUかCPUを自動的に選ぶ
+device='cuda' if torch.cuda.is_available() else 'cpu'
+
 model=models.MyModel()
+
+model.to(device)
 
 #ロス関数
 loss_fn=torch.nn.CrossEntropyLoss()
